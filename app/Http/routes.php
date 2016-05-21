@@ -15,5 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('ussd', 'UssdController@index');
+Route::resource('ussd', 'UssdController2@index');
+Route::resource('rapidussd', 'UssdController@index');
 

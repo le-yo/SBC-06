@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c284a9c122da36c99a8b6597bdce7aa6",
-    "content-hash": "8b1485987e7c5949da82435d403e52e8",
+    "hash": "7f3a51ad58ebf9b99ee7018f53db6bbd",
+    "content-hash": "df9eaa7003e90295665992b112fc1d62",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -517,6 +517,59 @@
                 "storage"
             ],
             "time": "2016-04-28 06:53:12"
+        },
+        {
+            "name": "leyo/rapidussd",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/le-yo/rapidussd.git",
+                "reference": "93641ad22de65c35d37eebc3759e88beff3eee8f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/le-yo/rapidussd/zipball/93641ad22de65c35d37eebc3759e88beff3eee8f",
+                "reference": "93641ad22de65c35d37eebc3759e88beff3eee8f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "leyo\\rapidussd\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leyo",
+                    "email": "leo@devs.mobi",
+                    "homepage": "http://devs.mobi",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Rapid ussd package for quick ussd development and prototyping",
+            "homepage": "https://github.com/leyo/rapidussd",
+            "keywords": [
+                "Rapidussd",
+                "ussd"
+            ],
+            "time": "2015-12-09 14:27:36"
         },
         {
             "name": "monolog/monolog",
