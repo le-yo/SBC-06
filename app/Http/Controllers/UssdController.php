@@ -14,7 +14,7 @@ public function index()
 {
 
 
-    $input = getInput();
+    $input = self::getInput();
     $text = $input['text'];
 
 //------------Get User Entry------------
