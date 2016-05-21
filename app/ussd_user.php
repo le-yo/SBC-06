@@ -1,6 +1,6 @@
 <?php
 
-namespace leyo\rapidussd\Http\models;
+namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class ussd_user extends Model {

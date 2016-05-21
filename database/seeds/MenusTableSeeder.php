@@ -18,9 +18,9 @@ class MenusTableSeeder extends Seeder
 
         DB::table('ussd_menus')->insert(array(
             array(
-                'title' => 'Welcome to Keheala',
+                'title' => 'Welcome to SBC 2006',
                 'is_parent' => 1,
-                'type' => 1,
+                'type' => 2,
                 'confirmation_message' => "",
             ),
             array(

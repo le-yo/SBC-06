@@ -18,54 +18,39 @@ class MenuItemsTableSeeder extends Seeder
         DB::table('ussd_menu_items')->insert(array(
             array(
                 'menu_id' => 1,
-                'description' => 'Verify Treatment',
-                'next_menu_id' => 2,
-                'step' => 0,
-                'confirmation_phrase' => '',
+                'description' => 'Enter File Number',
+                'next_menu_id' => 0,
+                'step' => 1,
+                'confirmation_phrase' => 'File Number',
             ),
-            array(
+              array(
                 'menu_id' => 1,
-                'description' => 'Compliance Score',
-                'next_menu_id' => 3,
-                'step' => 0,
-                'confirmation_phrase' => '',
+                'description' => 'Enter Name',
+                'next_menu_id' => 0,
+                'step' => 2,
+                'confirmation_phrase' => 'Name',
             ),
-            array(
+               array(
                 'menu_id' => 1,
-                'description' => 'TB info',
-                'next_menu_id' => 4,
-                'step' => 0,
-                'confirmation_phrase' => '',
+                'description' => 'Stream',
+                'next_menu_id' => 0,
+                'step' => 3,
+                'confirmation_phrase' => 'Stream',
             ),
-            array(
+                array(
                 'menu_id' => 1,
-                'description' => 'Supporter chat',
-                'next_menu_id' => 5,
-                'step' => 0,
-                'confirmation_phrase' => '',
+                'description' => 'House',
+                'next_menu_id' => 0,
+                'step' => 4,
+                'confirmation_phrase' => 'House',
             ),
-            array(
+                     array(
                 'menu_id' => 1,
-                'description' => 'Ask TB Coordinator',
-                'next_menu_id' => 6,
-                'step' => 0,
-                'confirmation_phrase' => '',
+                'description' => 'Profession',
+                'next_menu_id' => 0,
+                'step' => 5,
+                'confirmation_phrase' => 'Profession',
             ),
-            array(
-                'menu_id' => 1,
-                'description' => 'Help',
-                'next_menu_id' => 7,
-                'step' => 0,
-                'confirmation_phrase' => '',
-            ),
-//            array(
-//                'menu_id' => 2,
-//                'description' => 'Mini Statements',
-//                'next_menu_id' => 7,
-//                'step' => 0,
-//                'confirmation_phrase' => '',
-//            ),
-
         ));
     }
 }
