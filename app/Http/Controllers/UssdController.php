@@ -241,28 +241,39 @@ class UssdController extends Controller
 
     public function validateRegistrationDetails($user,$message){
 
-//        print_r($user);
-//        exit;
-        switch ($user->id) {
-            case 1:
-                //get the loan balance
-                $response =  "Validate stuff";
-//                exit;
 
+        switch ($user->progress) {
+            case 1:
+                if(is_numeric($message) && strlen(trim($message)) == 5){
+                    return TRUE;
+                }else{
+                    return FALSE;
+                }
+                break;
+            case 2:
+                $exploded_name = explode(" ",$message);
+                if(count($exploded_name) > 1){
+                    return TRUE;
+                }else{
+                    return FALSE;
+                }
+                break;
+            case 3:
+                if((strtolower($message) == 'a') || (strtolower($message) == 'b') || (strtolower($message) == 'c')|| (strtolower($message) == 'd')|| (strtolower($message) == 'e')|| (strtolower($message) == 'f')){
+                    return TRUE;
+                }else{
+                    return FALSE;
+                }
+                break;
+            case 4:
+                return TRUE;
                 break;
             case 5:
-
-                break;
-            case 6:
+                return TRUE;
+            break;
 
             default :
-                $response = $menu->confirmation_message;
-
-                $notify = new NotifyController();
-                //$notify->sendSms($user->phone_no,$response);
-                //self::resetUser($user);
-                self::sendResponse($response,2,$user);
-
+              return TRUE;
                 break;
         }
 
