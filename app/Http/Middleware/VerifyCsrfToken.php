@@ -11,7 +11,7 @@ class VerifyCsrfToken extends BaseVerifier
      *
      * @var array
      */
-    protected $except = ['ussd'
+    protected $except = ['ussd','rapidussd'
         //
     ];
 }
