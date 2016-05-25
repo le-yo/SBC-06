@@ -182,26 +182,29 @@ class UssdController extends Controller
 
         $message = str_replace(",","",$message);
        
-        // switch ($menu->id) {
-        //     case 4:
-        //         //get the loan balance
+         switch ($menu->id) {
+             case 1:
+                 //get the loan balance
+                 self::validateRegistrationDetails($user,$message);
+                 echo "Validate stuff";
+                 exit;
 
-        //         break;
-        //     case 5:
+                 break;
+             case 5:
 
-        //         break;
-        //     case 6:
+                 break;
+             case 6:
 
-        //     default :
-        //         $response = $menu->confirmation_message;
+             default :
+                 $response = $menu->confirmation_message;
 
-        //         $notify = new NotifyController();
-        //         //$notify->sendSms($user->phone_no,$response);
-        //         //self::resetUser($user);
-        //         self::sendResponse($response,2,$user);
+                 $notify = new NotifyController();
+                 //$notify->sendSms($user->phone_no,$response);
+                 //self::resetUser($user);
+                 self::sendResponse($response,2,$user);
 
-        //         break;
-        // }
+                 break;
+         }
 
 //        if((is_numeric(trim($message)))&&(1000<=$message)&&($message<=50000)){
 // //            //save to the db
@@ -234,6 +237,37 @@ class UssdController extends Controller
 //        }
 
         return $response;
+    }
+
+    public function validateRegistrationDetails($user,$message){
+
+//        print_r($user);
+//        exit;
+        switch ($user->id) {
+            case 1:
+                //get the loan balance
+                $response =  "Validate stuff";
+//                exit;
+
+                break;
+            case 5:
+
+                break;
+            case 6:
+
+            default :
+                $response = $menu->confirmation_message;
+
+                $notify = new NotifyController();
+                //$notify->sendSms($user->phone_no,$response);
+                //self::resetUser($user);
+                self::sendResponse($response,2,$user);
+
+                break;
+        }
+
+        return $response;
+
     }
 
     //continue USSD Menu
