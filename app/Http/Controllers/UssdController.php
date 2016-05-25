@@ -185,9 +185,26 @@ class UssdController extends Controller
          switch ($menu->id) {
              case 1:
                  //get the loan balance
-                 self::validateRegistrationDetails($user,$message);
-                 echo "Validate stuff";
-                 exit;
+                 $response = '';
+                 if(self::validateRegistrationDetails($user,$message)){
+                     $step = $user->progress + 1;
+                 }else{
+                     $step = $user->progress;
+                 }
+                 $menuItem = ussd_menu_items::whereMenuIdAndStep($menu->id,$step)->first();
+                 if($menuItem){
+
+                     $user->menu_item_id = $menuItem->id;
+                     $user->menu_id = $menu->id;
+                     $user->progress = $step;
+                     $user->save();
+                     return $response.$menuItem -> description;
+                 }else{
+                     $response = self::confirmBatch($user,$menu);
+                     return $response;
+
+                 }
+
 
                  break;
              case 5:
