@@ -419,7 +419,7 @@ class UssdController extends Controller
             $user->progress = $step;
             $user->session = 1;
             $user->save();
-            return $menuItem -> description;
+            return $menu->title.PHP_EOL.$menuItem -> description;
 
         }
 
@@ -431,12 +431,12 @@ class UssdController extends Controller
 
 
         } elseif($type == 2) {
-            $output = "CON ";
-            $response = $response.PHP_EOL."1. Back to main menu".PHP_EOL."2. Log out";
-            $user->session = 4;
-            $user->progress = 0;
-            $user->save();
-        }else{
+//            $output = "CON ";
+//            $response = $response.PHP_EOL."1. Back to main menu".PHP_EOL."2. Log out";
+//            $user->session = 4;
+//            $user->progress = 0;
+//            $user->save();
+//        }else{
             $output = "END ";
         }
 
