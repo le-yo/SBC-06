@@ -261,7 +261,7 @@ class UssdController extends Controller
 
         switch ($user->progress) {
             case 1:
-                if(is_numeric($message) && strlen(trim($message)) == 5){
+                if(is_numeric($message) && strlen(trim($message)) >3 && strlen(trim($message)) <6 ){
                     return TRUE;
                 }else{
                     return FALSE;
