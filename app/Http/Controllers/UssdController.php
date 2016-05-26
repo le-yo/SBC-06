@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -276,6 +277,7 @@ class UssdController extends Controller
                 }
                 break;
             case 3:
+                $message = substr($message,-1);
                 if((strtolower($message) == 'a') || (strtolower($message) == 'b') || (strtolower($message) == 'c')|| (strtolower($message) == 'd')|| (strtolower($message) == 'e')|| (strtolower($message) == 'f')){
                     return TRUE;
                 }else{
@@ -506,6 +508,10 @@ class UssdController extends Controller
         $menu = ussd_menu::find($user->menu_id);
         if (self::validationVariations($message, 1, "yes")) {
 
+            if($user->menu_id == 1){
+
+            }
+
             //if confirmed
 
 
@@ -531,6 +537,38 @@ class UssdController extends Controller
 
     }
 
+    public function postConfirmation($user,$menu){
+
+        switch ($menu->id) {
+            case 1:
+                //save user details
+                $file_no = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,1)->orderBy('id', 'DESC')->first()->response;
+                $name = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,2)->orderBy('id', 'DESC')->first()->response;
+                $stream = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,2)->orderBy('id', 'DESC')->first()->response;
+                $house = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,2)->orderBy('id', 'DESC')->first()->response;
+                $profession = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,2)->orderBy('id', 'DESC')->first()->response;
+
+                $alumni = User::firstOrNew(['file_no' => $file_no]);
+                $alumni->file_no = $file_no;
+                $alumni->name = $name;
+                $alumni->stream = substr($stream,-1);
+                $alumni->house = $house;
+                $alumni->profession = $profession;
+                $alumni->phone = $user->phone;
+                return $alumni->save();
+                break;
+
+            case 2:
+
+                break;
+            default :
+              return;
+                break;
+        }
+
+
+
+    }
     
     public function confirmBatch($user,$menu){
         //confirm this stuff
