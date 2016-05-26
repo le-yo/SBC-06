@@ -433,12 +433,12 @@ class UssdController extends Controller
 
 
         } elseif($type == 2) {
-//            $output = "CON ";
-//            $response = $response.PHP_EOL."1. Back to main menu".PHP_EOL."2. Log out";
-//            $user->session = 4;
-//            $user->progress = 0;
-//            $user->save();
-//        }else{
+            $output = "CON ";
+            $response = $response.PHP_EOL."1. Back to main menu".PHP_EOL."2. Log out";
+            $user->session = 4;
+            $user->progress = 0;
+            $user->save();
+        }else{
             $output = "END ";
         }
 
@@ -508,19 +508,16 @@ class UssdController extends Controller
         $menu = ussd_menu::find($user->menu_id);
         if (self::validationVariations($message, 1, "yes")) {
 
-            if($user->menu_id == 1){
-
-            }
 
             //if confirmed
 
 
-            // self::postConfirmation($user,$menu);
+             self::postConfirmation($user,$menu);
             // self::resetUser($user);
             $response = $menu->confirmation_message;
             // $notify = new NotifyController();
             // $notify->sendSms($user->phone_no,$response);
-            self::sendResponse($response,2);
+            self::sendResponse($response,2,$user);
 
         }else{
             //not confirmed
@@ -544,9 +541,9 @@ class UssdController extends Controller
                 //save user details
                 $file_no = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,1)->orderBy('id', 'DESC')->first()->response;
                 $name = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,2)->orderBy('id', 'DESC')->first()->response;
-                $stream = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,2)->orderBy('id', 'DESC')->first()->response;
-                $house = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,2)->orderBy('id', 'DESC')->first()->response;
-                $profession = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,2)->orderBy('id', 'DESC')->first()->response;
+                $stream = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,3)->orderBy('id', 'DESC')->first()->response;
+                $house = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,4)->orderBy('id', 'DESC')->first()->response;
+                $profession = ussd_response::whereUserIdAndMenuIdAndMenuItemId($user->id, $user->menu_id,5)->orderBy('id', 'DESC')->first()->response;
 
                 $alumni = User::firstOrNew(['file_no' => $file_no]);
                 $alumni->file_no = $file_no;
@@ -555,6 +552,7 @@ class UssdController extends Controller
                 $alumni->house = $house;
                 $alumni->profession = $profession;
                 $alumni->phone = $user->phone;
+                $alumni->email = $file_no.'@2006.devs.mobi';
                 return $alumni->save();
                 break;
 

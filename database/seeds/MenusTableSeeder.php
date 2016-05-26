@@ -21,7 +21,7 @@ class MenusTableSeeder extends Seeder
                 'title' => 'Welcome to SBC 2006',
                 'is_parent' => 1,
                 'type' => 2,
-                'confirmation_message' => "Thanks for joining SBC 2006 alumni",
+                'confirmation_message' => "Registration to SBC 2006 database successful",
             ),
             array(
                 'title' => 'Treatment Verification',
